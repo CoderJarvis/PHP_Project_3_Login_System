@@ -1,4 +1,5 @@
 
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
@@ -10,15 +11,12 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="hom.php">Home</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="login.php">Login</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="signup.php">Sign up</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="logout.php">Logout</a>
         </li>
@@ -36,4 +34,5 @@
     </div>
   </div>
 </nav>
+
 

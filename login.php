@@ -42,7 +42,7 @@
          
             $_SESSION["username"]="username";
             $_SESSION["login"]=true;
-            // header('location : welcome.php');//not functioning this line we tried no auto direct
+            // header("location : order.php");//not functioning this line we tried no auto direct
             // exit;
         }
         else {

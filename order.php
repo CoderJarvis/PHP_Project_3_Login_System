@@ -1,4 +1,6 @@
-
+<?php
+session_start();//most important shuld be at alwys top
+?>
 
 <!doctype html>
 <html lang="en">
@@ -18,7 +20,7 @@
     ?>
 
 <?php
-session_start();
+
 
 if (!isset($_SESSION['login'])) 
 {
