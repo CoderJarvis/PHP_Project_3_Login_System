@@ -16,9 +16,6 @@
 <body>
 
 
-
-
-
   <?php
         include '_navbar.php';
    ?>
@@ -64,7 +61,6 @@
         }
 
         
-
         
         if ($successAlert) {
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
