@@ -36,7 +36,7 @@ session_start();
 
 else {
 echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<strong>Are you comedy me</strong> You are not logged in yet
+<strong>Are you comedy me</strong> You are not logged in yet please login to continue
 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>';
 
