@@ -19,7 +19,7 @@ session_start();
 
 <body>
     <?php
-    include '_navbar.php';
+    include '_navbar.html';
 
 
     if (isset($_SESSION['login'])) 

@@ -16,7 +16,7 @@ session_start();//most important shuld be at alwys top
   </head>
   <body>
     <?php
-    include '_navbar.php';
+    include '_navbar.html';
     ?>
 
 <?php

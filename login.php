@@ -18,7 +18,7 @@
 <body>
  
     <?php
-    include '_navbar.php';
+    include '_navbar.html';
 
     if ($_SERVER["REQUEST_METHOD"]=="POST") {
 
