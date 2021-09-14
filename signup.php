@@ -29,57 +29,65 @@
         $password=$_POST['password'];
         $vpassword=$_POST['vpassword'];
 
-        $successAlert=false;
-        $PasswordErrorAlert=false;
+        $allFieldMandatory=false;
         $usernameUniqueError=false;
+        $PasswordErrorAlert=false;
+        $successAlert=false;
 
         $sql="SELECT * FROM `user` WHERE username='$username'";
         $result=mysqli_query($conn,$sql);
-        $num=mysqli_num_rows($result);
-        if ($num!=0) 
+        $num=mysqli_num_rows($result); //if returns one then same userrname exist
+
+
+        if ($username == NULL || $password == NULL || $vpassword == NULL) //if a row exist of same username
+        {
+          $allFieldMandatory=true;
+        }
+
+        else if ($num==1) //if a row exist of same username
         {
           $usernameUniqueError=true;
         }
-
-        else 
+        else if ($password != $vpassword) //if a row exist of same username
         {
-              if ($password == $vpassword && ($username && $password && $vpassword != NULL) ) 
-              {
-                  $sql="INSERT INTO `user` (`username`, `password`, `date`) VALUES ('$username', '$password', current_timestamp());";
-                  $result=mysqli_query($conn,$sql);
-                    if ($result)
-                    {
-                            $successAlert=true;
-                    }
-                        
-              }
-              else 
-              {
-                $PasswordErrorAlert=true;
-              }
-          
+          $PasswordErrorAlert=true;
+        }
+
+        else{
+        $sql="INSERT INTO `user` (`username`, `password`, `date`) VALUES ('$username', '$password', current_timestamp());";
+        $result=mysqli_query($conn,$sql);
+            if ($result)
+            {
+                    $successAlert=true;
+            }
         }
 
         
         
+        if ($allFieldMandatory) {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Sorry!</strong> All the fields are mandatory
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+          }
+          if ($usernameUniqueError) {
+            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Error!</strong> username alreay exists please choose another username
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+          }
+          if ($PasswordErrorAlert) {
+              echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>Error!</strong> Sorry, Password not matched. Please try again
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>';
+          }
         if ($successAlert) {
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Success!</strong> your account succesfully created and you can now log in
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>';
             
-        }
-        if ($PasswordErrorAlert) {
-            echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error!</strong> Sorry, Password not matched. Please try again
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
-        if ($usernameUniqueError) {
-          echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error!</strong> username alreay exists please choose another username
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
         }
         
     }
