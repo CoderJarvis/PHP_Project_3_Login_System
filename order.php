@@ -33,10 +33,11 @@ if (!isset($_SESSION['login']))
 else 
 
 {
-  echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
-<strong>Good Afternoon Sir...  . </strong> You can order now & enjoy our famous Biriyani
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>';
+    echo '<div style="margin-bottom: 0rem;" class="alert alert-success alert-dismissible fade show" role="alert">
+  <strong>Good Afternoon Sir...  . </strong> You can order now & enjoy our famous Biriyani
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>';
+  echo '<img src="bg.jpg" class="img-fluid" alt="...">';
 
 
 }
