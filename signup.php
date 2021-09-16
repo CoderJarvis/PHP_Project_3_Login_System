@@ -29,28 +29,28 @@
         $password=$_POST['password'];
         $vpassword=$_POST['vpassword'];
 
-        $allFieldMandatory=false;
-        $usernameUniqueError=false;
-        $PasswordErrorAlert=false;
-        $successAlert=false;
+        $emptyFieldError=false;
+        $usernameExistError=false;
+        $passwordMismatchError=false;
+        $loginSuccessAlert=false;
 
         $sql="SELECT * FROM `user` WHERE username='$username'";
         $result=mysqli_query($conn,$sql);
-        $num=mysqli_num_rows($result); //if returns one then same userrname exist
+        $num=mysqli_num_rows($result); //if returns true if same userrname exist
 
 
-        if ($username == NULL || $password == NULL || $vpassword == NULL) //if a row exist of same username
+        if ($username == NULL || $password == NULL || $vpassword == NULL) //if at least one field is empty
         {
-          $allFieldMandatory=true;
+          $emptyFieldError=true;
         }
 
         else if ($num==1) //if a row exist of same username
         {
-          $usernameUniqueError=true;
+          $usernameExistError=true;
         }
-        else if ($password != $vpassword) //if a row exist of same username
+        else if ($password != $vpassword) //if both passwords doesnt match
         {
-          $PasswordErrorAlert=true;
+          $passwordMismatchError=true;
         }
 
         else{
@@ -58,31 +58,31 @@
         $result=mysqli_query($conn,$sql);
             if ($result)
             {
-                    $successAlert=true;
+                    $loginSuccessAlert=true;
             }
         }
 
         
         
-        if ($allFieldMandatory) {
+        if ($emptyFieldError) {
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
               <strong>Sorry!</strong> All the fields are mandatory
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>';
           }
-          if ($usernameUniqueError) {
+          if ($usernameExistError) {
             echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
               <strong>Error!</strong> username alreay exists please choose another username
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>';
           }
-          if ($PasswordErrorAlert) {
+          if ($passwordMismatchError) {
               echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
               <strong>Error!</strong> Sorry, Password not matched. Please try again
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
               </div>';
           }
-        if ($successAlert) {
+        if ($loginSuccessAlert) {
             echo '<div class="alert alert-success alert-dismissible fade show" role="alert">
             <strong>Success!</strong> your account succesfully created and you can now log in
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
